@@ -12,7 +12,7 @@
     },
     {
       "name": "package-install",
-      "setup": "",
+      "setup": "python3 -m pip install -U pip",
       "run": "python3 -m pip install -e .",
       "input": "",
       "output": "",
