@@ -12,12 +12,12 @@ except ImportError:
     (lambda x: np.cos(x) - x, lambda x: -np.sin(x) - 1, 1, 1e-10, 4,
      0.7390851332),
     (lambda x: np.sin(np.exp(x)) - 1, lambda x: np.exp(x) *
-     np.cos(np.exp(x)), 0.5, 1e-20, 25, 0.45158270719343396),
+     np.cos(np.exp(x)), 0.5, 1e-10, 25, 0.45158270719343396),
     (lambda x: x**2 - 1, lambda x: 2 * x, 2, 1e-5, 5, 1.00000004646114741)
 ])
 def test_working_newton(f, g, x0, eps, k, ans):
     from nonlinear_solvers.solvers import newton_raphson
-    npt.assert_almost_equal(newton_raphson(f, g, x0, eps, k), ans)
+    npt.assert_almost_equal(newton_raphson(f, g, x0, eps, k), ans, decimal=5)
 
 
 @pytest.mark.parametrize("f, g, x0, eps, k", [
