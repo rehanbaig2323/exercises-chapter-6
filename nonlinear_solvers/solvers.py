@@ -33,11 +33,12 @@ def newton_raphson(f, df, x_0, eps=1.0e-5, max_its=20):
     """
     count = 0
     while count <= max_its:
-        x_0 = x_0 - (f(x_0) / df(x_0))
-        if abs(f(x_0)) < eps:
-            return x_0
+        x = x_0 - (f(x_0) / df(x_0))
+        if abs(f(x)) < eps:
+            return x
         else:
             count += 1
+            x_0 = x
             continue
     raise ConvergenceError("Too many iterations, hasn't converged")
 
@@ -67,6 +68,21 @@ def bisection(f, x_0, x_1, eps=1.0e-5, max_its=20):
     float
         The approximate root computed using bisection.
     """
+    count = 0
+    while count <= max_its:
+        if f(x_0) * f(x_1) > 0:
+            raise ValueError("Points not on either side of x-axis.")
+        x = (x_0 + x_1) / 2
+        if abs(f(x)) < eps:
+            return x
+        else:
+            if f(x_0) * f(x) > 0:
+                x_0 = x
+            else:
+                x_1 = x
+            count += 1
+            continue
+    raise ConvergenceError("Too many iterations.")
 
 
 def solve(f, df, x_0, x_1, eps=1.0e-5, max_its_n=20, max_its_b=20):
