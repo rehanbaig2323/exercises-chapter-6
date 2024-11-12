@@ -102,3 +102,4 @@ def solve(f, df, x_0, x_1, eps=1.0e-5, max_its_n=20, max_its_b=20):
     """
     # Delete these two lines when implementing the method.
 
+# hahashgiajhg
