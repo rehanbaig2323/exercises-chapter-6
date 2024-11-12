@@ -39,6 +39,7 @@ def newton_raphson(f, df, x_0, eps=1.0e-5, max_its=20):
         else:
             count += 1
             x_0 = x
+            print(x_0)
             continue
     raise ConvergenceError("Too many iterations, hasn't converged")
 
@@ -117,5 +118,3 @@ def solve(f, df, x_0, x_1, eps=1.0e-5, max_its_n=20, max_its_b=20):
         The approximate root.
     """
     # Delete these two lines when implementing the method.
-
-# hahashgiajhg
